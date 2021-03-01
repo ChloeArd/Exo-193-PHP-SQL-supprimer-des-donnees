@@ -30,7 +30,6 @@ if ($bdd->exec($sql) !== false) {
     echo "Le contenu de la table user supprimé ! <br>";
 }
 
-
 //2.4
 $sql1 = ( " INSERT INTO user VALUES (null, 'Ard', 'Chloé', 'ruelle vitou', 4, 59186, 'Anor', 'France', 'chlochlo.ard@mail.fr') ");
 
