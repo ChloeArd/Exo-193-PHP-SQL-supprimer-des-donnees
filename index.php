@@ -3,7 +3,7 @@
 /**
  * 1. Importez la table user dans une base de données que vous aurez créée au préalable via PhpMyAdmin
  * 2. En utilisant l'objet de connexion qui a déjà été défini =>
- *    --> Remplacez les informations de connexion ( nom de la base et vérifiez les paramètres d'accès ). ??????????????????
+ *    --> Remplacez les informations de connexion ( nom de la base et vérifiez les paramètres d'accès ).
  *    --> Supprimez le dernier utilisateur de la liste, faites une capture d'écran dans PhpMyAdmin pour me montrer que vous avez supprimé l'entrée et pushez la avec votre code.
  *    --> Faites un truncate de la base de données, les auto incréments présents seront remis à 0
  *    --> Insérez un nouvel utilisateur dans la table ( faites un screenshot et ajoutez le au repo )
@@ -13,10 +13,13 @@
 
 require "Classes/DB.php";
 
+
 $bdd = DB::getInstance();
 
-//2.2
+//2.1
 
+
+//2.2
 $userId = $bdd->lastInsertId();
 $deleteLastId = "DELETE FROM user WHERE id = $userId";
 
@@ -39,14 +42,14 @@ $bdd->exec($sql1);
 $sql2 = "DROP TABLE user";
 
 if ($bdd->exec($sql2) !== false) {
-    echo "table user supprimée <br>";
+    echo "table user supprimée !<br>";
 }
 
 //2.6
 $sql3 = "DROP DATABASE live3";
 
 if($bdd->exec($sql3) !== false) {
-    echo "Base de données complétement supprimés. <br>";
+    echo "Base de données complétement supprimés !<br>";
 }
 
 
