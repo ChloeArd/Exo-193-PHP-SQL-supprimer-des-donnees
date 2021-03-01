@@ -4,14 +4,15 @@
  * Handle MySQL Connection with PDO.
  * Class DB
  */
-class DB
-{
+class DB {
+
     private string $server = 'localhost';
-    private string $db = 'live';
+    private string $db = 'table_test_phpmyadmin';
     private string $user = 'root';
     private string $pwd = '';
 
-    private static PDO $dbInstance;
+    private static ?PDO $dbInstance = null;
+
 
     /**
      * DbStatic constructor.
@@ -20,6 +21,7 @@ class DB
         try {
             self::$dbInstance = new PDO("mysql:host=$this->server;dbname=$this->db;charset=utf8", $this->user, $this->pwd);
             self::$dbInstance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         }
         catch(PDOException $exception) {
             echo $exception->getMessage();
@@ -30,7 +32,7 @@ class DB
      * Return PDO instance.
      */
     public static function getInstance(): ?PDO {
-        if( is_null(self::$dbInstance) ) {
+        if( null === self::$dbInstance ) {
             new self();
         }
         return self::$dbInstance;
