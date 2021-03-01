@@ -16,39 +16,38 @@ require "Classes/DB.php";
 $bdd = DB::getInstance();
 
 //2.2
+
 $userId = $bdd->lastInsertId();
 $deleteLastId = "DELETE FROM user WHERE id = $userId";
 
 if($bdd->exec($deleteLastId) !== false) {
-    echo "Le dernier utilisateur a été supprimé !";
+    echo "Le dernier utilisateur a été supprimé ! <br>";
 }
 
 //2.3
-/*$sql = "TRUNCATE TABLE user";
-if ($db->exec($sql) !== false) {
-    echo "Le contenu de la table user supprimé !";
+$sql = "TRUNCATE TABLE user";
+if ($bdd->exec($sql) !== false) {
+    echo "Le contenu de la table user supprimé ! <br>";
 }
+
 
 //2.4
 $sql1 = ( " INSERT INTO user VALUES (null, 'Ard', 'Chloé', 'ruelle vitou', 4, 59186, 'Anor', 'France', 'chlochlo.ard@mail.fr') ");
 
-$db->exec($sql1);
+$bdd->exec($sql1);
 
 //2.5
 $sql2 = "DROP TABLE user";
 
-if ($bdd->exec($sql) !== false) {
-    echo "table user supprimée";
+if ($bdd->exec($sql2) !== false) {
+    echo "table user supprimée <br>";
 }
-
 
 //2.6
-$sql3 = "DROP DATABASE table_test_phpmyadmin";
+$sql3 = "DROP DATABASE live3";
 
 if($bdd->exec($sql3) !== false) {
-    echo "Base de données complétement supprimés.";
+    echo "Base de données complétement supprimés. <br>";
 }
 
-
-*/
 

@@ -42,5 +42,7 @@ class DB {
     /**
      * Avoid instance to be cloned.
      */
-    public function __clone() {}
+    public function __clone() {
+
+    }
 }
