@@ -7,7 +7,7 @@
 class DB {
 
     private string $server = 'localhost';
-    private string $db = 'table_test_phpmyadmin';
+    private string $db = 'live3';
     private string $user = 'root';
     private string $pwd = '';
 
@@ -24,6 +24,7 @@ class DB {
 
         }
         catch(PDOException $exception) {
+            self::$dbInstance->rollBack();
             echo $exception->getMessage();
         }
     }

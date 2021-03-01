@@ -11,15 +11,13 @@
  *    --> Et pour finir, comme vous n'avez plus de table dans la base de données, vous décidez de supprimer aussi la base de données.
  */
 
-require "./Classes/DB.php";
+require "Classes/DB.php";
 
 $bdd = DB::getInstance();
 
 //2.2
 $userId = $bdd->lastInsertId();
 $deleteLastId = "DELETE FROM user WHERE id = $userId";
-
-$bdd->exec($deleteLastId);
 
 if($bdd->exec($deleteLastId) !== false) {
     echo "Le dernier utilisateur a été supprimé !";
@@ -32,13 +30,16 @@ if ($db->exec($sql) !== false) {
 }
 
 //2.4
-$sql1 = ( "
-        INSERT INTO user VALUES (null, 'Ard', 'Chloé', 'ruelle vitou', 4, 59186, 'Anor', 'France', 'chlochlo.ard@mail.fr')
-    ");
+$sql1 = ( " INSERT INTO user VALUES (null, 'Ard', 'Chloé', 'ruelle vitou', 4, 59186, 'Anor', 'France', 'chlochlo.ard@mail.fr') ");
 
 $db->exec($sql1);
 
 //2.5
+$sql2 = "DROP TABLE user";
+
+if ($bdd->exec($sql) !== false) {
+    echo "table user supprimée";
+}
 
 
 //2.6
@@ -47,8 +48,6 @@ $sql3 = "DROP DATABASE table_test_phpmyadmin";
 if($bdd->exec($sql3) !== false) {
     echo "Base de données complétement supprimés.";
 }
-
-
 
 
 */
